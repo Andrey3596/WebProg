@@ -13,5 +13,5 @@ class ShowOrdersView(TemplateView):
          
    def get_context_data(self, **kwargs) -> dict[str, Any]:
        context = super().get_context_data(**kwargs)
-       context["orders"] = Order.objects.all
+       context["orders"] = Order.objects.all()
        return context

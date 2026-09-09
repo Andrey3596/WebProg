@@ -3,15 +3,35 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
-class UserSerializer(serializers.ModelSerializer):
-    
+class UserSerializer(serializers.ModelSerializer): 
     class Meta:
             model = User
             fields = "__all__"
-            
+      
+      
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'name']   
+        
+class DishSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()  
+    class Meta:
+        model = Dish
+        fields = ['id', 'name', 'description', 'price', 'category']  
+         
+class OrderItemSerializer(serializers.ModelSerializer):
+    dish = DishSerializer()
+    class Meta:
+        model = OrderItem
+        fields = ['id', 'order', 'dish', 'quantity', 'price']
+     
+
 class OrderSerializer(serializers.ModelSerializer):
-    category = UserSerializer(read_only = True)
-    
+    user = UserSerializer()
+    items = OrderItemSerializer(many=True)  # вложенные позиции
     class Meta:
         model = Order
-        fields = ['id','name','category']
+        fields = ['id', 'user', 'created_at', 'status', 'total_amount', 'items']
+        
+
