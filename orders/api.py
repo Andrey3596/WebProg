@@ -2,8 +2,8 @@ from rest_framework.viewsets import GenericViewSet
 
 from rest_framework import mixins
 
-from orders.models import Dish
-from orders.serializers import DishSerializer
+from orders.models import Dish,Category, Order, OrderItem
+from orders.serializers import OrderSerializer
 
 class OrdersViewset(
     mixins.CreateModelMixin,
@@ -12,5 +12,5 @@ class OrdersViewset(
     mixins.ListModelMixin,
     GenericViewSet
     ):
-    queryset = Dish.objects.all()
-    serializer_class = DishSerializer
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer

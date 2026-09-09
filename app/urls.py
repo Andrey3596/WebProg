@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from orders.api import OrdersViewset
 from orders import views
 
@@ -26,6 +27,6 @@ router.register("orders",OrdersViewset,basename="orders")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.ShowStudentsView.as_view()),
+    path('', views.ShowOrdersView.as_view()),
     path('api/', include(router.urls)),
 ]

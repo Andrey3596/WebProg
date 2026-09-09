@@ -1,17 +1,17 @@
-from orders.models import Dish, Category
-
+from orders.models import Dish, Category, Order, OrderItem
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     
     class Meta:
-            model = Category
+            model = User
             fields = "__all__"
             
-class DishSerializer(serializers.ModelSerializer):
-    group = CategorySerializer(read_only = True)
+class OrderSerializer(serializers.ModelSerializer):
+    category = UserSerializer(read_only = True)
     
     class Meta:
-        model = Dish
+        model = Order
         fields = ['id','name','category']
