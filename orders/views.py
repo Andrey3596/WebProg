@@ -15,3 +15,13 @@ class ShowOrdersView(TemplateView):
        context = super().get_context_data(**kwargs)
        context["orders"] = Order.objects.all()
        return context
+   
+   
+class ShowDishsView(TemplateView):
+   template_name = "orders/show_dishs.html"
+
+         
+   def get_context_data(self, **kwargs) -> dict[str, Any]:
+       context = super().get_context_data(**kwargs)
+       context["dishs"] = Dish.objects.all()
+       return context   

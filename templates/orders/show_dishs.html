@@ -6,9 +6,8 @@
     <title>Document</title>
   </head>
   <body>
-        {% for s in orders%}
-            {{s.id}} {{s.user}}<br>
-
+        {% for s in dishs%}
+            -{{s.id}} -{{s.name}} -{{s.price}} -{{s.category}} -{{s.description}}<br>
         {% endfor %}
   </body>
 </html>

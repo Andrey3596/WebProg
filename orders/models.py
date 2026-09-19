@@ -35,16 +35,11 @@ class Order(models.Model):
         ('completed', 'Завершён'),
         ('cancelled', 'Отменён'),
     ]
-
-    
     user = models.ForeignKey(User,on_delete=models.PROTECT)
-    
     created_at = models.DateField('Дата создания', auto_now_add=True)
-    
     status = models.CharField('Статус',max_length=20,  choices=STATUS_CHOICES, default='processing')
-    
     total_amount = models.DecimalField('Общая сумма',max_digits=10, decimal_places=2,default=0.00)
-
+    
     def __str__(self):
         return f'Заказ #{self.id} от {self.user.username} ({self.created_at.strftime("%d.%m.%Y")})'
 
@@ -55,7 +50,7 @@ class Order(models.Model):
         
     
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order,on_delete=models.CASCADE)
+    order = models.ForeignKey(Order,on_delete=models.CASCADE,related_name='items')
     dish = models.ForeignKey(Dish,on_delete=models.PROTECT)
     
     quantity = models.PositiveIntegerField('Количество', default=1)
