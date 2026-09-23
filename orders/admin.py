@@ -1,7 +1,12 @@
 from django.contrib import admin
-from orders.models import Dish, Category, Order, OrderItem
+from orders.models import Dish, Category, Order, OrderItem, Profile
 # Register your models here.
 
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        return False
 
 @admin.register(Dish)
 class DishAdmin(admin.ModelAdmin):
