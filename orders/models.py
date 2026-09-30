@@ -51,19 +51,19 @@ class Dish(models.Model):
 
 
 class Order(models.Model):
-    class Status(models.StringChoices):
+    class Status(models.TextChoices):
             processing = 'В обработке'
             ready = 'Готово'
             completed = 'Завершён'
             cancelled ='Отменён'
     
-    user = models.ForeignKey(User,on_delete=models.PROTECT)
+    user = models.ForeignKey(Profile,on_delete=models.PROTECT)
     created_at = models.DateField('Дата создания', auto_now_add=True)
     status = models.CharField('Статус',max_length=20,  choices=Status, default='processing')
     total_amount = models.DecimalField('Общая сумма',max_digits=10, decimal_places=2,default=0.00)
     
     def __str__(self):
-        return f'Заказ #{self.id} от {self.user.username} ({self.created_at.strftime("%d.%m.%Y")})'
+        return f'Заказ #{self.id} от {self.user.user.username} ({self.created_at.strftime("%d.%m.%Y")})'
 
     class Meta:
         verbose_name = 'Заказ'

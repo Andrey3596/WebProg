@@ -2,7 +2,7 @@
 
 from rest_framework import mixins, viewsets
 from rest_framework.viewsets import ModelViewSet
-from orders.models import Dish,Category, Order, OrderItem
+from orders.models import Dish,Category, Order, OrderItem,Profile
 from orders.serializers import OrderSerializer, CategorySerializer, DishSerializer, OrderItemSerializer
 
 class OrdersViewSet(
