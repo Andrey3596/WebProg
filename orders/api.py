@@ -3,7 +3,7 @@
 from rest_framework import mixins, viewsets
 from rest_framework.viewsets import ModelViewSet
 from orders.models import Dish,Category, Order, OrderItem,Profile
-from orders.serializers import OrderSerializer, CategorySerializer, DishSerializer, OrderItemSerializer
+from orders.serializers import OrderSerializer, CategorySerializer, DishSerializer, OrderItemSerializer, ProfileSerializer
 
 class OrdersViewSet(
     mixins.CreateModelMixin,
@@ -43,3 +43,11 @@ class OrderItemsViewSet(mixins.CreateModelMixin,
     viewsets.GenericViewSet):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
+    
+class ProfilesViewSet(
+    mixins.RetrieveModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet
+):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer

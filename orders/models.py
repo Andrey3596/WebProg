@@ -25,6 +25,7 @@ def on_user_create(sender, instance, created, *args, **kwargs):
 # Create your models here.
 class Category(models.Model):
     name = models.TextField("Название категории")
+    picture = models.ImageField("Изображение", null=True, blank=True, upload_to="categories") 
     
     class Meta:
         verbose_name = "Категория"
@@ -39,7 +40,7 @@ class Dish(models.Model):
     description = models.TextField('Описание', blank=True)
     price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
     category = models.ForeignKey("Category", on_delete=models.CASCADE, null=True)
-    image = models.ImageField("Картинка", null=True, upload_to='dish')
+    picture = models.ImageField("Изображение", null=True, blank=True, upload_to="dishes")
     
     class Meta:
         verbose_name = "Блюдо"

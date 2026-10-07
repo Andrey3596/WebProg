@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from django.conf import settings
-from orders.api import CategorysViewSet, DishsViewSet, OrdersViewSet, OrderItemsViewSet
+from orders.api import CategorysViewSet, DishsViewSet, OrdersViewSet, OrderItemsViewSet,ProfilesViewSet
 from orders import views
 from django.conf.urls.static import static
 
@@ -13,7 +13,7 @@ router.register("orders",OrdersViewSet,basename="orders")
 router.register('dishes', DishsViewSet, basename='dish')
 router.register('orderitems', OrderItemsViewSet, basename='orderitem')
 router.register('categories', CategorysViewSet, basename='category')
-
+router.register('profiles',   ProfilesViewSet,   basename='profile')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
