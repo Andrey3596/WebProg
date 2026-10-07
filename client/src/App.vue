@@ -25,8 +25,8 @@ async function onLoadClick() {
 onBeforeMount(async () => {
     await fetchDishes();
 })
-
 </script>
+
 
 <template>
 
