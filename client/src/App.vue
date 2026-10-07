@@ -197,6 +197,32 @@ onBeforeMount(async () => {
 </script>
 
 <template>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid justify-content-between">
+    <a class="navbar-brand" href="#">Кафе</a>
+
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Пользователь
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li>
+            <a class="dropdown-item" href="/admin">Админка</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
   <div class="container mt-4">
     <h1>Кафе — управление</h1>
 
